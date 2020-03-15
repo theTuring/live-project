@@ -107,7 +107,15 @@ public class RecordServiceImpl{
             return false;
     }
 
-    public List<Record> queryAll(int status){
+    public Record getRecordByNumber(String selfOrderNumber){
+        SqlSession sqlSession = new MybatisConfig().setIt();
+        RecordMapper recordMapper = sqlSession.getMapper(RecordMapper.class);
+        Record record = new Record();
+        record = recordMapper.selectWin(selfOrderNumber);
+        return record;
+    }
+
+    public List<Record> queryAll(){
         RecordMapper recordMapper = new MybatisConfig().setIt().getMapper(RecordMapper.class);
         ArrayList<Record> lists=(ArrayList<Record>) recordMapper.queryAll(1);
         return lists;

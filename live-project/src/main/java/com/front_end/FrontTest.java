@@ -1,5 +1,5 @@
-package com.front_end;
-
+package com.front_end;//package com.front_end;
+//
 import com.front_end.swing.mainUI.MainUI;
 
 /**
@@ -12,9 +12,6 @@ public class FrontTest {
 
     public static void main(String[] args) {
         MainUI mainUI = new MainUI();
-
-
     }
 
 }
-    

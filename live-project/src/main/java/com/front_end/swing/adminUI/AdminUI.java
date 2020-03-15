@@ -1,8 +1,14 @@
-package com.front_end.swing.adminUI;
+package com.front_end.swing.adminUI;//package com.front_end.swing.adminUI;
 
-import com.eltima.components.ui.DatePicker;
+
+import com.back_end.domain.Record;
+import com.back_end.service.RecordService;
+import com.back_end.service.impl.RecordServiceImpl;
+import com.back_end.utils.ExportExcel;
 import com.front_end.domain.Config;
+import com.front_end.swing.resultUI.SuccessUI;
 import com.front_end.tool.configtool.dao.ConfigDao;
+import com.eltima.components.ui.DatePicker;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -31,7 +37,8 @@ public class AdminUI extends JFrame {
     public static int the_max_mask;
 
     private void button1ActionPerformed(ActionEvent e) {
-
+        RecordServiceImpl recordService = new RecordServiceImpl();
+        new ExportExcel().excel();
     }
 
     private void button2ActionPerformed(ActionEvent e) throws IOException {
@@ -45,8 +52,12 @@ public class AdminUI extends JFrame {
         ConfigDao configDao = new ConfigDao();
         configDao.emptyConfig();
         configDao.insertConfig(config);
+    }
 
-
+    private void button3ActionPerformed(ActionEvent e) {
+        RecordServiceImpl recordService = new RecordServiceImpl();
+        recordService.getWin();
+        SuccessUI successUI = new SuccessUI();
     }
 
     public AdminUI() throws IOException {
@@ -123,14 +134,14 @@ public class AdminUI extends JFrame {
 //        this.add(textField3);
 
         final JSpinner numSpinner1 = new JSpinner();
-        SpinnerModel numModel1 = new SpinnerNumberModel(configDao.initConfig().get(0).getMax_have(), 0, 999, 1);
+        SpinnerModel numModel1 = new SpinnerNumberModel(0, 0, 999, 1);
         numSpinner1.setModel(numModel1);
         numSpinner1.setBounds(new Rectangle(330, 270, 310, 30));
         this.setLayout(null);//设置布局管理器为空
         this.add(numSpinner1);
 
         final JSpinner numSpinner2 = new JSpinner();
-        SpinnerModel numModel2 = new SpinnerNumberModel(configDao.initConfig().get(0).getMax_mask(), 0, 99999, 1);
+        SpinnerModel numModel2 = new SpinnerNumberModel(0, 0, 99999, 1);
         numSpinner2.setModel(numModel2);
         numSpinner2.setBounds(new Rectangle(240, 350, 400, 30));
         this.setLayout(null);//设置布局管理器为空
@@ -182,12 +193,32 @@ public class AdminUI extends JFrame {
         this.setLayout(null);//设置布局管理器为空
         this.add(button2);
 
+        button3 = new JButton("->开始抽签");
+        button3.setBounds(new Rectangle(240, 590, 300, 40));//参数分别是坐标x，y，宽，高
+        button3.setFont(font);//设置字体
+        button3.setOpaque(false);//透明化
+        //添加监听
+        button3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                button3ActionPerformed(e);
+            }
+        });
+        this.setLayout(null);//设置布局管理器为空
+        this.add(button3);
+
+        super.setSize(760, 700);
+        super.setVisible(true);
+        super.setResizable(false);
+        centered(this);
+
+
         super.setSize(760, 700);
         super.setVisible(true);
         super.setResizable(false);
         centered(this);
 
     }
+
 
     //布局居中方法
     public void centered(Container container) {
@@ -226,5 +257,6 @@ public class AdminUI extends JFrame {
     private JButton button1;
 
     private JButton button2;
+
+    private JButton button3;
 }
-    

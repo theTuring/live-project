@@ -1,3 +1,4 @@
+
 package com.front_end.domain;
 
 /**
@@ -54,4 +55,3 @@ public class Config {
         return start_date + " " + end_date + " " + max_have + " " + max_mask;
     }
 }
-    

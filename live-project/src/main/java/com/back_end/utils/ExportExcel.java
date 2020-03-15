@@ -17,11 +17,11 @@ import java.util.List;
  * TODO:
  */
 public class ExportExcel {
-    public static void main(String[] args) {
+    public void excel() {
         try {
             WritableWorkbook wwb = null;
             // 创建可写入的Excel工作簿
-            String fileName = "D://book.xls";
+            String fileName = "/Users/a/Desktop/book.xls";
             File file=new File(fileName);
             if (!file.exists()) {
                 file.createNewFile();
@@ -32,7 +32,7 @@ public class ExportExcel {
             WritableSheet ws = wwb.createSheet("用户信息", 0);
             //查询数据库中所有的数据
 
-            List<Record> lists=(ArrayList<Record>)new RecordServiceImpl().queryAll(1);
+            List<Record> lists=(ArrayList<Record>)new RecordServiceImpl().queryAll();
 
             //要插入到的Excel表格的行号，默认从0开始
             Label labelId= new Label(0, 0, "姓名");//表示第

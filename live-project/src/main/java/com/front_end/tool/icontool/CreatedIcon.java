@@ -1,3 +1,4 @@
+
 package com.front_end.tool.icontool;
 
 //创建图片标签类
@@ -12,5 +13,4 @@ public class CreatedIcon {
     return imgic;
 
     }
-
 }

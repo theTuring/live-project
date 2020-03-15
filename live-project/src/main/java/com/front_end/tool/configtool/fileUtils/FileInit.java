@@ -8,7 +8,7 @@ public class FileInit {
 
     public String init() {
 
-        File file = new File(".//src/main/resources/config.properties");
+        File file = new File(".//src/main/resources/config.txt");
 
         File fileParent = file.getParentFile();
 

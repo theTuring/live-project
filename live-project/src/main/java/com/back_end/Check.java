@@ -27,7 +27,8 @@ public class Check {
 //        } catch (Exception e) {
 //            e.printStackTrace();
 //        }
-        System.out.println(new RecordServiceImpl().checkStatus("c97a901f-2118-4378-8190-f2ec9fdd92"));
+//        System.out.println(new RecordServiceImpl().checkStatus("c97a901f-2118-4378-8190-f2ec9fdd92"));
+        new AdminServiceImpl().login("hack" , "123456");
 //        new RecordServiceImpl().insertRecord("hack" , "13205039021" , "350583199712144336" , 5);
     }
 }

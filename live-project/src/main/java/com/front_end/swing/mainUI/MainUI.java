@@ -1,4 +1,5 @@
-package com.front_end.swing.mainUI;
+
+package com.front_end.swing.mainUI;//package com.front_end.swing.mainUI;
 
 import com.front_end.swing.adminUI.LoginUI;
 import com.front_end.swing.queryUI.QueryUI;
@@ -141,4 +142,3 @@ public class MainUI extends JFrame {
     private JButton button3;
 
 }
-    

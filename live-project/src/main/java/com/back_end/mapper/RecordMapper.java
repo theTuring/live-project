@@ -27,4 +27,6 @@ public interface RecordMapper {
     public boolean checkStatus(String selfOrderNumber);
 
     public List<Record> queryAll(int status);
+
+    public Record selectWin(String selfOrderNumber);
 }

@@ -1,7 +1,14 @@
+
 package com.front_end.swing.reservationUI;
 
+import com.back_end.domain.Record;
+import com.back_end.service.OrderService;
+import com.back_end.service.RecordService;
+import com.back_end.service.impl.OrderServiceImpl;
+import com.back_end.service.impl.RecordServiceImpl;
+import com.front_end.domain.Config;
+import com.front_end.swing.resultUI.SuccessUI;
 import com.front_end.tool.configtool.dao.ConfigDao;
-import com.front_end.tool.configtool.fileUtils.FileInit;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -19,7 +26,26 @@ import java.io.IOException;
  */
 public class ReservationUI extends JFrame {
 
-    private void button1ActionPerformed(ActionEvent e) {
+    public static int the_max_mask;
+    public static int the_mask_num;
+
+    private void button1ActionPerformed(ActionEvent e) throws IOException {
+
+        OrderService orderService = new OrderServiceImpl();
+        orderService.start();
+        RecordServiceImpl recordService =  new RecordServiceImpl();
+        recordService.insertRecord(textField1.getText() , textField2.getText() ,
+                textField3.getText() , the_mask_num);
+        SuccessUI successUI = new SuccessUI();
+//        ConfigDao configDao = new ConfigDao();
+//
+//        Config config = configDao.initConfig().get(0);
+//
+//        config.setMax_mask(the_max_mask);
+//        configDao.emptyConfig();
+//        System.out.println(the_max_mask);
+//        configDao.insertConfig(config);
+
 
     }
 
@@ -29,8 +55,14 @@ public class ReservationUI extends JFrame {
 
     }
 
-    private void button3ActionPerformed(ActionEvent e) {
+    private void button3ActionPerformed(ActionEvent e) throws IOException {
+        ConfigDao configDao = new ConfigDao();
 
+        Config config = configDao.initConfig().get(0);
+
+        config.setMax_mask(Integer.parseInt(textField4.getText()));
+        configDao.emptyConfig();
+        configDao.insertConfig(config);
     }
 
 
@@ -102,7 +134,7 @@ public class ReservationUI extends JFrame {
 //        this.add(textField4);
 
         final JSpinner numSpinner = new JSpinner();
-        SpinnerModel numModel = new SpinnerNumberModel(0, 0, configDao.initConfig().get(0).getMax_have(), 1);
+        SpinnerModel numModel = new SpinnerNumberModel(0, 0, 3, 1);
         numSpinner.setModel(numModel);
         numSpinner.setBounds(new Rectangle(240, 350, 400, 30));
         this.setLayout(null);//设置布局管理器为空
@@ -111,6 +143,7 @@ public class ReservationUI extends JFrame {
         numSpinner.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
                 System.out.println(numSpinner.getValue());
+                the_mask_num = Integer.parseInt(numSpinner.getValue().toString());
             }
         });
 
@@ -121,7 +154,11 @@ public class ReservationUI extends JFrame {
         //添加监听
         button1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                button1ActionPerformed(e);
+                try {
+                    button1ActionPerformed(e);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
             }
         });
         this.setLayout(null);//设置布局管理器为空
@@ -147,19 +184,24 @@ public class ReservationUI extends JFrame {
         this.setLayout(null);//设置布局管理器为空
         this.add(label6);
 
-        textField3 = new JTextField(20);
-        textField3.setBounds(new Rectangle(250, 595, 200, 30));
+        textField4 = new JTextField(20);
+        textField4.setBounds(new Rectangle(250, 595, 200, 30));
         this.setLayout(null);//设置布局管理器为空
-        this.add(textField3);
+        this.add(textField4);
 
-        button3 = new JButton("->设置（需管理员权限）");
+        button3 = new JButton("->设置（方便测试）");
         button3.setBounds(new Rectangle(460, 590, 260, 40));//参数分别是坐标x，y，宽，高
         button3.setFont(font);//设置字体
         button3.setOpaque(false);//透明化
         //添加监听
         button3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                button3ActionPerformed(e);
+                try {
+                    button3ActionPerformed(e);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+                the_max_mask = Integer.parseInt(textField4.getText());
             }
         });
         this.setLayout(null);//设置布局管理器为空
@@ -217,4 +259,3 @@ public class ReservationUI extends JFrame {
     private JButton button3;
 
 }
-    

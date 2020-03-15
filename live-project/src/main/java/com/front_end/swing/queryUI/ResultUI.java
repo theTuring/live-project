@@ -1,11 +1,8 @@
+
 package com.front_end.swing.queryUI;
 
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * description: ResultUI <br>
@@ -69,30 +66,35 @@ public class ResultUI extends JFrame {
 
         textField1 = new JTextField(20);
         textField1.setBounds(new Rectangle(240, 110, 400, 30));
+        textField1.setText(new QueryUI().record.getName());
         textField1.setEditable(false);
         this.setLayout(null);//设置布局管理器为空
         this.add(textField1);
 
         textField2 = new JTextField(20);
         textField2.setBounds(new Rectangle(240, 190, 400, 30));
+        textField2.setText(new QueryUI().record.getCardId());
         textField2.setEditable(false);
         this.setLayout(null);//设置布局管理器为空
         this.add(textField2);
 
         textField3 = new JTextField(20);
         textField3.setBounds(new Rectangle(240, 270, 400, 30));
+        textField3.setText(new QueryUI().record.getTel());
         textField3.setEditable(false);
         this.setLayout(null);//设置布局管理器为空
         this.add(textField3);
 
         textField4 = new JTextField(20);
         textField4.setBounds(new Rectangle(240, 350, 400, 30));
+        textField4.setText(String.valueOf(new QueryUI().record.getCount()));
         textField4.setEditable(false);
         this.setLayout(null);//设置布局管理器为空
         this.add(textField4);
 
         textField5 = new JTextField(20);
         textField5.setBounds(new Rectangle(240, 430, 400, 30));
+        textField5.setText(new QueryUI().record.getSelfOrderNumber());
         textField5.setEditable(false);
         this.setLayout(null);//设置布局管理器为空
         this.add(textField5);
@@ -142,6 +144,5 @@ public class ResultUI extends JFrame {
     private JTextField textField4;
 
     private JTextField textField5;
-
 
 }

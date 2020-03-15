@@ -1,6 +1,9 @@
+
 package com.front_end.swing.queryUI;
 
-import com.front_end.swing.reservationUI.ReservationUI;
+import com.back_end.domain.Record;
+import com.back_end.service.RecordService;
+import com.back_end.service.impl.RecordServiceImpl;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,11 +16,16 @@ import java.awt.event.ActionListener;
  * author: Z&C <br>
  * version: 1.0.0 <br>
  */
-public class QueryUI extends JFrame {
+public class QueryUI extends JFrame{
+    public static Record record = new Record();
 
     private void button1ActionPerformed(ActionEvent e) {
+        RecordServiceImpl recordService = new RecordServiceImpl();
+        if (recordService.checkStatus(textField1.getText())) {
+            record = recordService.getRecordByNumber(textField1.getText());
+            ResultUI reservationUI = new ResultUI();
+        }
 
-        ResultUI reservationUI = new ResultUI();
 
     }
 
@@ -86,4 +94,3 @@ public class QueryUI extends JFrame {
     //按钮
     private JButton button1;
 }
-    

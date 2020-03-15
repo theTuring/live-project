@@ -1,5 +1,8 @@
-package com.front_end.swing.adminUI;
 
+package com.front_end.swing.adminUI;//package com.front_end.swing.adminUI;
+
+import com.back_end.service.AdminService;
+import com.back_end.service.impl.AdminServiceImpl;
 import com.front_end.swing.reservationUI.ReservationUI;
 
 import javax.swing.*;
@@ -17,8 +20,12 @@ import java.io.IOException;
 public class LoginUI extends JFrame {
 
     private void button1ActionPerformed(ActionEvent e) throws IOException {
-
-        AdminUI adminUI = new AdminUI();
+        AdminService adminService = new AdminServiceImpl();
+        String user = textField1.getText();
+        String pwd = String.valueOf(passwordField1.getPassword());
+        if (adminService.login(user , pwd)) {
+            AdminUI adminUI = new AdminUI();
+        }
     }
 
     public LoginUI() {
@@ -115,4 +122,3 @@ public class LoginUI extends JFrame {
     //按钮
     private JButton button1;
 }
-    
