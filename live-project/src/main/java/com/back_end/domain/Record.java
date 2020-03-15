@@ -13,7 +13,7 @@ public class Record {
     private int count;
     private int orderId;
     private String selfOrderNumber;
-    private int status;
+    private int status = 0;
 
     public String getName() {
         return name;

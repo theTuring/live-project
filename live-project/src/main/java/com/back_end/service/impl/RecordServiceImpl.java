@@ -1,11 +1,13 @@
 package com.back_end.service.impl;
 
+import com.back_end.mapper.OrderMapper;
 import com.back_end.service.RecordService;
 import com.back_end.domain.Record;
 import com.back_end.mapper.RecordMapper;
 import com.back_end.utils.MybatisConfig;
 import com.back_end.utils.Rex;
 import com.back_end.utils.SpecialData;
+import org.apache.ibatis.session.SqlSession;
 
 import java.sql.ResultSet;
 
@@ -30,7 +32,6 @@ public class RecordServiceImpl{
     }
 
     public void insertRecord(String name , String tel , String cardId , int count){
-
         Record record = new Record();
         String sepcialNumber = new SpecialData().getNumber();
         int orderId = new OrderServiceImpl().selectOrder(new OrderServiceImpl().specialTimeNumber);
@@ -41,5 +42,11 @@ public class RecordServiceImpl{
         record.setCount(count);
         record.setOrderId(orderId);
         record.setSelfOrderNumber(sepcialNumber);
+
+        SqlSession session = new MybatisConfig().setIt();
+        RecordMapper recordMapper = session.getMapper(RecordMapper.class);
+        recordMapper.insertRecord(record);
+        session.commit();
+        session.close();
     }
 }

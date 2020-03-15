@@ -9,7 +9,5 @@ import com.back_end.domain.Record;
  */
 
 public interface RecordMapper {
-    public void insertRecord (Record record) throws Exception;
-    public Record selectRecordByCardId(String name) throws Exception;
-    public Record selectRecordByTel(String tel) throws Exception;
+    public void insertRecord (Record record);
 }

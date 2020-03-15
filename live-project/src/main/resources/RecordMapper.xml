@@ -3,17 +3,9 @@
 
 <mapper namespace="com.back_end.mapper.RecordMapper">
 
-    <insert id="insertRecord" parameterMap="domain.Record">
-        INSERT INTO record(name, tel, cardId, count, orderId) VALUES (#{name}, #{tel}, #{cardId}, #{count}, #{orderId})
+
+    <insert id="insertRecord" parameterType="com.back_end.domain.Record">
+        insert into record(`name` , tel , cardId , `count` , orderId , selfOrderNumber , status) values (#{name} , #{tel} , #{cardId} , #{count} , #{orderId} , #{selfOrderNumber} , #{status})
     </insert>
-
-    <select id="selectRecordByCardId" parameterMap="domain.Record">
-        SELECT * FROM record WHERE cardId = #{cardId}
-    </select>
-
-    <select id="selectRecordByTel" parameterMap="domain.Record">
-        SELECT * FROM record WHRER tel = #{tel}
-    </select>
-
 
 </mapper>

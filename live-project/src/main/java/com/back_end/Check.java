@@ -4,6 +4,7 @@ import com.back_end.service.AdminService;
 import com.back_end.service.OrderService;
 import com.back_end.service.impl.AdminServiceImpl;
 import com.back_end.service.impl.OrderServiceImpl;
+import com.back_end.service.impl.RecordServiceImpl;
 
 /**
  * @author 会飞的大野鸡
@@ -13,9 +14,13 @@ import com.back_end.service.impl.OrderServiceImpl;
 
 public class Check {
     public static void main(String[] args){
-        OrderService orderService = new OrderServiceImpl();
-        orderService.insert();
-        AdminService adminService = new AdminServiceImpl();
-        System.out.println(adminService.login("hack" , "1234567"));
+//        OrderService orderService = new OrderServiceImpl();
+//        orderService.start();
+//        AdminService adminService = new AdminServiceImpl();
+//        System.out.println(adminService.login("hack" , "1234567"));
+
+        new OrderServiceImpl().start();
+
+        new RecordServiceImpl().insertRecord("hack" , "13205039021" , "350583199712144336" , 5);
     }
 }

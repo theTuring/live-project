@@ -30,6 +30,7 @@ public class OrderServiceImpl implements OrderService {
         specialTimeNumber = specialNumber;
         orderMapper.insertOrder(specialNumber);
         session.commit();
+        session.close();
     }
 
     public int selectOrder(String judgeNumber){

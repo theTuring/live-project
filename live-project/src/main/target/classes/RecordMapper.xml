@@ -3,4 +3,9 @@
 
 <mapper namespace="com.back_end.mapper.RecordMapper">
 
+
+    <insert id="insertRecord" parameterType="com.back_end.domain.Record">
+        insert into record(`name` , tel , cardId , `count` , orderId , selfOrderNumber , status) values (#{name} , #{tel} , #{cardId} , #{count} , #{orderId} , #{selfOrderNumber} , #{status})
+    </insert>
+
 </mapper>
