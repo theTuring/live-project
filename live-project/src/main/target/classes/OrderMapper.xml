@@ -5,8 +5,4 @@
     <insert id="insertOrder" parameterType="java.lang.String">
         insert into `order`(judgeNumber) values (#{order})
     </insert>
-
-    <select id="selectOrder" parameterType="java.lang.String" resultType="java.lang.String">
-        select id from `order` where judgeNumber = #{judgeNumber}
-    </select>
 </mapper>

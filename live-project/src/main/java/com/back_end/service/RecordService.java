@@ -6,5 +6,5 @@ package com.back_end.service;
  * TODO:
  */
 
-public interface TestService {
+public interface RecordService {
 }

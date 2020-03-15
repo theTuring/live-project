@@ -7,4 +7,9 @@ package com.back_end.mapper;
  */
 
 public interface OrderMapper {
+//    插入judgeNumber
+    void insertOrder(String order);
+
+//    取得id
+    int selectOrder(String judgeNumber);
 }

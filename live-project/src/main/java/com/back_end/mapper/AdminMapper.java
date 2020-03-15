@@ -7,4 +7,6 @@ package com.back_end.mapper;
  */
 
 public interface AdminMapper {
+//    获得姓名
+    String getPwByName(String name);
 }

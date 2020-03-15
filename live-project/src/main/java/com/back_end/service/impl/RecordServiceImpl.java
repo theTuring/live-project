@@ -1,6 +1,6 @@
 package com.back_end.service.impl;
 
-import com.back_end.service.TestService;
+import com.back_end.service.RecordService;
 
 /**
  * @author 会飞的大野鸡
@@ -8,5 +8,6 @@ import com.back_end.service.TestService;
  * TODO:
  */
 
-public class TestServiceImpl implements TestService {
+public class RecordServiceImpl implements RecordService {
+
 }
