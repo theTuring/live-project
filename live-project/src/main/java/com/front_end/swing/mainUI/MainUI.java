@@ -1,6 +1,8 @@
 package com.front_end.swing.mainUI;
 
-import com.front_end.icontool.CreatecdIcon;
+import com.front_end.swing.adminUI.LoginUI;
+import com.front_end.swing.reservationUI.ReservationUI;
+import com.front_end.tool.icontool.CreatedIcon;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +17,11 @@ import java.awt.event.ActionListener;
  */
 public class MainUI extends JFrame {
 
+    public static boolean admin_state;//全局的管理员状态 false用户态 true管理态
+
     private void button1ActionPerformed(ActionEvent e) {
+
+        ReservationUI reservationUI = new ReservationUI();
 
     }
 
@@ -24,6 +30,8 @@ public class MainUI extends JFrame {
     }
 
     private void button3ActionPerformed(ActionEvent e) {
+
+        LoginUI loginUI = new LoginUI();
 
     }
 
@@ -36,11 +44,10 @@ public class MainUI extends JFrame {
         Font font=new Font("宋体",Font.BOLD,18);
 
         label1 = new JLabel();
-        label1.setIcon(CreatecdIcon.add("logo.png"));
+        label1.setIcon(CreatedIcon.add("logo.png"));
         label1.setBounds(new Rectangle(0, 0, 800, 600));
         this.setLayout(null);//设置布局管理器为空
         this.add(label1);
-
 
         button1 = new JButton("->口罩预约");
         button1.setBounds(new Rectangle(250, 260, 300, 40));//参数分别是坐标x，y，宽，高
@@ -83,7 +90,7 @@ public class MainUI extends JFrame {
         this.add(button3);
 
         label2 = new JLabel();
-        label2.setIcon(CreatecdIcon.add("background.png"));
+        label2.setIcon(CreatedIcon.add("background.png"));
         label2.setBounds(new Rectangle(0, 0, 800, 600));
         this.setLayout(null);//设置布局管理器为空
         this.add(label2);
