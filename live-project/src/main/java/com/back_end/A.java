@@ -1,4 +1,4 @@
-package com.back_end.Service;
+package com.back_end;
 
 /**
  * @author 会飞的大野鸡
@@ -6,5 +6,5 @@ package com.back_end.Service;
  * TODO:
  */
 
-public interface Test {
+public class A {
 }
