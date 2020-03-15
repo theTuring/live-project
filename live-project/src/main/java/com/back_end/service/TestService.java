@@ -7,4 +7,6 @@ package com.back_end.service;
  */
 
 public interface TestService {
+    public String Register(String name, String tel, String cardId, int count, int orderId) throws Exception;
+
 }
