@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <properties resource="log4j.properties">
+        <!--properties中还可以配置一些属性名和属性值-->
+    </properties>
+
+    <!--<settings>-->
+    <!--<setting name="" value=""/>-->
+    <!--</settings>-->
+
+    <typeAliases>
+        <!--在mapper.xml中常常需要输入需要的类型，有些名字太长，不方便开发，所以使用别名来使得开发变得方便-->
+
+        <!--针对当个别名的定义
+        type:类型的路径
+        alias:别名-->
+        <!--<typeAlias type="src.mybatis_learning.pojo.User" alias = "mybatis_learning.pojo.User"/>-->
+
+        <!--批量别名的定义-->
+        <!--package指定包名，mybatis自动扫描保重的pojo类，自动定义别名，别名就是Pojo的类名，(首字母大小写都可以)-->
+        <!--<package name="src"/>-->
+    </typeAliases>
+
+    <environments default="development">
+        <environment id="development">
+
+            <transactionManager type="JDBC"/>
+            <!-- 配置数据库连接信息 -->
+            <dataSource type="POOLED">
+                <!-- value属性值引用db.properties配置文件中配置的值 -->
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--映射器 -->
+    <!--记载映射文件-->
+    <mappers>
+
+        <!--单个映射文件的加载-->
+        <!--<mapper resource = "mybatis_learning.pojo.User"/>-->
+        <mapper resource="AdminMapper.xml"/>
+        <mapper resource="OrderMapper.xml"/>
+        <mapper resource="RecordMapper.xml"/>
+        <!--        <package name="mapper/>-->
+        <!--通过mapper接口加载映射文件
+        遵循一些规范：需要将mapper接口类名和mapper.xml映射文件名称保持一致，且在一个目录
+        上边规范的前提为使用mapper代理方法-->
+        <!--        <mapper class = "mybatis_learning.mapper.UserMapper"/>-->
+
+        <!--批量加载maopper
+        需要制定mapper接口的包名，自动扫描包下边所以mapper接口进行加载
+        同样需要遵循上个mapper class 的规范-->
+        <!--<package name="mybatis_learning.mapper"/>-->
+
+    </mappers>
+</configuration>
+
+
+        <!--全局配置文件 当时用spring的时候即可不使用-->

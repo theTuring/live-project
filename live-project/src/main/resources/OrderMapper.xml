@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.back_end.mapper.OrderMapper">
+    <insert id="insertOrder" parameterType="java.lang.String">
+        insert into `order`(judgeNumber) values (#{order})
+    </insert>
+
+    <select id="selectOrder" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select id from `order` where judgeNumber = #{judgeNumber}
+    </select>
+</mapper>
