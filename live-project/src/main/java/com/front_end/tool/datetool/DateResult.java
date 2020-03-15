@@ -1,21 +1,21 @@
-//package com.front_end.tool.datetool;
-//
-//import java.awt.*;
-//import java.text.SimpleDateFormat;
-//import java.util.Date;
-//import java.util.Locale;
-//
-//public class DateResult {
-//
-//    //获取当前时间
-//    public String getCurrentTime(){
-//
-//        SimpleDateFormat ct = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
-//        //System.out.println(ct.format(new Date()));// new Date()为获取当前系统时间
-//        return ct.format(new Date());
-//
-//    }
-//
+package com.front_end.tool.datetool;
+
+import java.awt.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+public class DateResult {
+
+    //获取当前时间
+    public String getCurrentTime(){
+
+        SimpleDateFormat ct = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
+        //System.out.println(ct.format(new Date()));// new Date()为获取当前系统时间
+        return ct.format(new Date());
+
+    }
+
 //    public static DatePicker getDatePicker() {
 //        final DatePicker datepick;
 //        // 格式
@@ -48,9 +48,9 @@
 //        datepick.setTimePanleVisible(true);
 //        return datepick;
 //    }
-//
-//    public static void main(String[] args) {
-//
-//        // System.out.println(getCurrentTime());// new Date()为获取当前系统时间
-//    }
-//}
+
+    public static void main(String[] args) {
+
+        // System.out.println(getCurrentTime());// new Date()为获取当前系统时间
+    }
+}

@@ -2,7 +2,6 @@ package com.front_end.swing.mainUI;
 
 import com.front_end.swing.adminUI.LoginUI;
 import com.front_end.swing.reservationUI.ReservationUI;
-import com.front_end.swing.succeedUI.SucceedUI;
 import com.front_end.tool.icontool.CreatedIcon;
 
 import javax.swing.*;
@@ -20,25 +19,16 @@ public class MainUI extends JFrame {
 
     public static boolean admin_state;//全局的管理员状态 false用户态 true管理态
 
-    /*
-    * 口罩预约
-    * */
     private void button1ActionPerformed(ActionEvent e) {
 
         ReservationUI reservationUI = new ReservationUI();
 
     }
 
-    /*
-    * 中签查询
-    * */
     private void button2ActionPerformed(ActionEvent e) {
-        new SucceedUI();
+
     }
 
-    /*
-    * 管理员登录
-    * */
     private void button3ActionPerformed(ActionEvent e) {
 
         LoginUI loginUI = new LoginUI();
