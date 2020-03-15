@@ -1,6 +1,7 @@
 package com.front_end.swing.mainUI;
 
 import com.front_end.swing.adminUI.LoginUI;
+import com.front_end.swing.queryUI.QueryUI;
 import com.front_end.swing.reservationUI.ReservationUI;
 import com.front_end.tool.icontool.CreatedIcon;
 
@@ -26,6 +27,8 @@ public class MainUI extends JFrame {
     }
 
     private void button2ActionPerformed(ActionEvent e) {
+
+        QueryUI queryUI = new QueryUI();
 
     }
 

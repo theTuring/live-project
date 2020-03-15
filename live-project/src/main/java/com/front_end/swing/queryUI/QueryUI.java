@@ -1,4 +1,4 @@
-package com.front_end.swing.adminUI;
+package com.front_end.swing.queryUI;
 
 import com.front_end.swing.reservationUI.ReservationUI;
 
@@ -8,20 +8,21 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * description: LoginUI <br>
- * date: 2020/3/15 12:48 <br>
+ * description: QueryUI <br>
+ * date: 2020/3/15 14:58 <br>
  * author: Z&C <br>
  * version: 1.0.0 <br>
  */
-public class LoginUI extends JFrame {
+public class QueryUI extends JFrame {
 
     private void button1ActionPerformed(ActionEvent e) {
 
-        AdminUI adminUI = new AdminUI();
+        ReservationUI reservationUI = new ReservationUI();
+
     }
 
-    public LoginUI() {
-        super("管理员登录");
+    public QueryUI() {
+        super("中签查询");
 
         //设置字体为宋体 加粗 大小为26
         Font title_font=new Font("宋体",Font.BOLD,26);
@@ -30,38 +31,19 @@ public class LoginUI extends JFrame {
         Font font=new Font("宋体",Font.BOLD,18);
 
         label0 = new JLabel();
-        label0.setText("管理员登录");
-        label0.setBounds(new Rectangle(130, 25, 200, 40));
+        label0.setText("中签查询");
+        label0.setBounds(new Rectangle(340, 25, 200, 40));
         label0.setFont(title_font);
         this.setLayout(null);//设置布局管理器为空
         this.add(label0);
 
-        label1 = new JLabel();
-        label1.setText("登录：");
-        label1.setBounds(new Rectangle(50, 105, 200, 40));
-        label1.setFont(font);
-        this.setLayout(null);//设置布局管理器为空
-        this.add(label1);
-
-        label2 = new JLabel();
-        label2.setText("注册：");
-        label2.setBounds(new Rectangle(50, 185, 200, 40));
-        label2.setFont(font);
-        this.setLayout(null);//设置布局管理器为空
-        this.add(label2);
-
         textField1 = new JTextField(20);
-        textField1.setBounds(new Rectangle(120, 110, 200, 40));
+        textField1.setBounds(new Rectangle(100, 110, 600, 40));
         this.setLayout(null);//设置布局管理器为空
         this.add(textField1);
 
-        passwordField1 = new JPasswordField(20);
-        passwordField1.setBounds(new Rectangle(120, 185, 200, 40));
-        this.setLayout(null);//设置布局管理器为空
-        this.add(passwordField1);
-
-        button1 = new JButton("->点击登录");
-        button1.setBounds(new Rectangle(110, 260, 200, 40));//参数分别是坐标x，y，宽，高
+        button1 = new JButton("->点击查询");
+        button1.setBounds(new Rectangle(200, 200, 400, 40));//参数分别是坐标x，y，宽，高
         button1.setFont(font);//设置字体
         button1.setOpaque(false);//透明化
         //添加监听
@@ -73,10 +55,11 @@ public class LoginUI extends JFrame {
         this.setLayout(null);//设置布局管理器为空
         this.add(button1);
 
-        super.setSize(400, 400);
+        super.setSize(800, 400);
         super.setVisible(true);
         super.setResizable(false);
         centered(this);
+
     }
 
     //布局居中方法
@@ -97,15 +80,8 @@ public class LoginUI extends JFrame {
     //标签
     private JLabel label0;
 
-    private JLabel label1;
-
-    private JLabel label2;
-
     //文本框
     private JTextField textField1;
-
-    //密码框
-    private JPasswordField passwordField1;
 
     //按钮
     private JButton button1;
