@@ -6,6 +6,8 @@ import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import static com.front_end.tool.datetool.DateResult.getDatePicker;
 
@@ -16,6 +18,16 @@ import static com.front_end.tool.datetool.DateResult.getDatePicker;
  * version: 1.0.0 <br>
  */
 public class AdminUI extends JFrame {
+
+    private void button1ActionPerformed(ActionEvent e) {
+
+    }
+
+    private void button2ActionPerformed(ActionEvent e) {
+
+        dispose();
+
+    }
 
     public AdminUI() {
         super("管理员管理");
@@ -114,7 +126,33 @@ public class AdminUI extends JFrame {
             }
         });
 
-        super.setSize(760, 800);
+        button1 = new JButton("->导出名单(默认导入D://)");
+        button1.setBounds(new Rectangle(240, 430, 300, 40));//参数分别是坐标x，y，宽，高
+        button1.setFont(font);//设置字体
+        button1.setOpaque(false);//透明化
+        //添加监听
+        button1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                button1ActionPerformed(e);
+            }
+        });
+        this.setLayout(null);//设置布局管理器为空
+        this.add(button1);
+
+        button2 = new JButton("->保存设置");
+        button2.setBounds(new Rectangle(240, 510, 300, 40));//参数分别是坐标x，y，宽，高
+        button2.setFont(font);//设置字体
+        button2.setOpaque(false);//透明化
+        //添加监听
+        button2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                button2ActionPerformed(e);
+            }
+        });
+        this.setLayout(null);//设置布局管理器为空
+        this.add(button2);
+
+        super.setSize(760, 700);
         super.setVisible(true);
         super.setResizable(false);
         centered(this);
@@ -153,5 +191,10 @@ public class AdminUI extends JFrame {
     private JTextField textField2;
 
     private JTextField textField3;
+
+    //按钮
+    private JButton button1;
+
+    private JButton button2;
 }
     
