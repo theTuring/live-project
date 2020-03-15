@@ -20,6 +20,9 @@ import java.sql.ResultSet;
 public class RecordServiceImpl{
 
     public boolean check(String tel , String cardId){
+        SqlSession sqlSession = new MybatisConfig().setIt();
+        RecordMapper recordMapper = sqlSession.getMapper(RecordMapper.class);
+        int orderId = new OrderServiceImpl().selectOrder(new OrderServiceImpl().specialTimeNumber);
         boolean checkTel = new Rex().checkTel(tel);
         boolean checkCardId = new Rex().checkCardId(cardId);
         if (!checkCardId)
@@ -27,7 +30,21 @@ public class RecordServiceImpl{
         if (!checkTel)
             return false;
         //查询本次
+        Record record = new Record();
+        record.setTel(tel);
+        record.setOrderId(orderId);
+        record.setCardId(cardId);
+
         //查询前三次
+        for (int i = 0 ; i <= 3 ; i++){
+            orderId-=i;
+            record.setOrderId(orderId);
+            if (recordMapper.checkThisTimeByTel(record))
+                return false;
+            if (recordMapper.checkThisTimeByCardId(record))
+                return false;
+        }
+
         return true;
     }
 
