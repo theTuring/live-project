@@ -1,5 +1,6 @@
 package com.back_end.service.impl;
 
+import com.back_end.common.CommonDb;
 import com.back_end.mapper.OrderMapper;
 import com.back_end.service.RecordService;
 import com.back_end.domain.Record;
@@ -10,6 +11,7 @@ import com.back_end.utils.SpecialData;
 import org.apache.ibatis.session.SqlSession;
 
 import java.sql.ResultSet;
+import java.util.LinkedList;
 
 /**
  * @author 会飞的大野鸡
@@ -65,5 +67,41 @@ public class RecordServiceImpl{
         recordMapper.insertRecord(record);
         session.commit();
         session.close();
+    }
+
+    public void getWin(){
+        SqlSession sqlSession = new MybatisConfig().setIt();
+        RecordMapper recordMapper = sqlSession.getMapper(RecordMapper.class);
+        int orderId = new OrderServiceImpl().selectOrder(new OrderServiceImpl().specialTimeNumber);
+//        int orderId = 20;
+        LinkedList<String> linkedList = recordMapper.getLinks(orderId);
+//        System.out.println(linkedList);
+        LinkedList<String> winningList = new LinkedList<String>();
+        int total = new OrderServiceImpl().commonDb.getTotal();
+        int userMax = new OrderServiceImpl().commonDb.getUserMax();
+
+        for (int i = 0 ; i < total/userMax && i < linkedList.size() ; i++){
+            winningList.add(linkedList.get(i));
+        }
+
+        for (int i = 0 ; i < winningList.size() ; i++){
+            recordMapper.setStatus(winningList.get(i));
+            sqlSession.commit();
+        }
+
+        sqlSession.close();
+    }
+
+    //输入预约编号查找是否中签
+    public boolean checkStatus(String selfOrderNumber){
+        SqlSession sqlSession = new MybatisConfig().setIt();
+        RecordMapper recordMapper = sqlSession.getMapper(RecordMapper.class);
+        if (!recordMapper.checkStatus(selfOrderNumber))
+            return false;
+        int status = recordMapper.selectStatus(selfOrderNumber);
+        if (status == 1)
+            return true;
+        else
+            return false;
     }
 }

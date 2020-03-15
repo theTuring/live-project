@@ -16,4 +16,19 @@
         SELECT IF (EXISTS(SELECT * FROM record WHERE cardId = #{cardId} and orderId = #{orderId}) , TRUE , FALSE)
     </select>
 
+    <select id="getLinks" parameterType="java.lang.Integer" resultType="java.lang.String">
+        select selfOrderNumber from record where orderId = #{orderId}
+    </select>
+
+    <update id="setStatus" parameterType="java.lang.String">
+        update record set status = 1 where selfOrderNumber = #{selfOrderNumber}
+    </update>
+
+    <select id="selectStatus" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select status from record where selfOrderNumber = #{selfOrderNumber}
+    </select>
+
+    <select id="checkStatus" parameterType="java.lang.String" resultType="java.lang.Boolean">
+        SELECT IF (EXISTS(SELECT * FROM record WHERE selfOrderNumber = #{selfOrderNumber}) , TRUE , FALSE)
+    </select>
 </mapper>
