@@ -12,4 +12,8 @@ public interface RecordMapper {
     public void insertRecord (Record record) throws Exception;
     public Record selectRecordByCardId(String name) throws Exception;
     public Record selectRecordByTel(String tel) throws Exception;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 688544e60993708c791190a0dfc3876c0aa529f2
 }

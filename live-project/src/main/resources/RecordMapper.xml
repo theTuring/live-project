@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+<<<<<<< HEAD
 <mapper namespace="com.back_end.mapper.RecordMapper">
 
     <insert id="insertRecord" parameterMap="domain.Record">
@@ -13,5 +14,17 @@
     <select id="selectRecordByTel" parameterMap="domain.Record">
         SELECT * FROM record WHRER tel = #{tel}
     </select>
+=======
+<mapper>
+    <insert id="insertRecord" parameterMap="domain.Record">
+        INSERT INTO record(name, tel, cardId, count, orderId) VALUES (#{name}, #{tel}, #{cardId}, #{count}, #{orderId})
+    </insert>
+>>>>>>> 688544e60993708c791190a0dfc3876c0aa529f2
 
+    <select id="selectRecordByCardId" parameterMap="domain.Record">
+        SELECT * FROM record WHERE cardId = #{cardId}
+    </select>
+    <select id="selectRecordByTel" parameterMap="domain.Record">
+        SELECT * FROM record WHRER tel = #{tel}
+    </select>
 </mapper>
