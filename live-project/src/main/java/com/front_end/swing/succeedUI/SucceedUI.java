@@ -1,4 +1,4 @@
-package com.front_end.swing.adminUI;
+package com.front_end.swing.succeedUI;
 
 import javax.swing.*;
 import java.awt.*;
@@ -6,48 +6,43 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * description: LoginUI <br>
+ * description: 中签编号查询 <br>
  * date: 2020/3/15 12:48 <br>
  * author: Z&C <br>
  * version: 1.0.0 <br>
  */
-public class LoginUI extends JFrame {
+public class SucceedUI extends JFrame {
 
     private void button1ActionPerformed(ActionEvent e) {
 
     }
 
-    public LoginUI() {
-        super("管理员登录");
+    public SucceedUI() {
+        super("中签编号查询");
 
         //设置字体为宋体 加粗 大小为18
         Font font=new Font("宋体",Font.BOLD,18);
 
         label1 = new JLabel();
-        label1.setText("账号：");
-        label1.setBounds(new Rectangle(50, 105, 60, 40));
+        label1.setText("中签编号查询");
+        label1.setBounds(new Rectangle(100, 50, 200, 40));
         label1.setFont(font);
         this.setLayout(null);//设置布局管理器为空
         this.add(label1);
 
-        label2 = new JLabel();
-        label2.setText("密码：");
-        label2.setBounds(new Rectangle(50, 145, 60, 40));
-        label2.setFont(font);
+        label1 = new JLabel();
+        label1.setText("编号：");
+        label1.setBounds(new Rectangle(50, 105, 60, 40));
+        label1.setFont(font);
         this.setLayout(null);//设置布局管理器为空
-        this.add(label2);
+        this.add(label1);
 
         textField1 = new JTextField(20);
         textField1.setBounds(new Rectangle(110, 105, 200, 40));
         this.setLayout(null);//设置布局管理器为空
         this.add(textField1);
 
-        textField2 = new JTextField(20);
-        textField2.setBounds(new Rectangle(110, 145, 200, 40));
-        this.setLayout(null);//设置布局管理器为空
-        this.add(textField2);
-
-        button1 = new JButton("->登录");
+        button1 = new JButton("->查询");
         button1.setBounds(new Rectangle(100, 185, 200, 40));//参数分别是坐标x，y，宽，高
         button1.setFont(font);//设置字体
         button1.setOpaque(false);//透明化
@@ -89,8 +84,7 @@ public class LoginUI extends JFrame {
     //文本框
     private JTextField textField1;
 
-    private JTextField textField2;
-
+    //按钮
     private JButton button1;
+
 }
-    
