@@ -9,6 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 /**
  * description: MainUI <br>
@@ -20,7 +21,7 @@ public class MainUI extends JFrame {
 
     public static boolean admin_state;//全局的管理员状态 false用户态 true管理态
 
-    private void button1ActionPerformed(ActionEvent e) {
+    private void button1ActionPerformed(ActionEvent e) throws IOException {
 
         ReservationUI reservationUI = new ReservationUI();
 
@@ -59,7 +60,11 @@ public class MainUI extends JFrame {
         //添加监听
         button1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                button1ActionPerformed(e);
+                try {
+                    button1ActionPerformed(e);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
             }
         });
         this.setLayout(null);//设置布局管理器为空

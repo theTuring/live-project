@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 /**
  * description: LoginUI <br>
@@ -15,7 +16,7 @@ import java.awt.event.ActionListener;
  */
 public class LoginUI extends JFrame {
 
-    private void button1ActionPerformed(ActionEvent e) {
+    private void button1ActionPerformed(ActionEvent e) throws IOException {
 
         AdminUI adminUI = new AdminUI();
     }
@@ -67,7 +68,11 @@ public class LoginUI extends JFrame {
         //添加监听
         button1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                button1ActionPerformed(e);
+                try {
+                    button1ActionPerformed(e);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
             }
         });
         this.setLayout(null);//设置布局管理器为空

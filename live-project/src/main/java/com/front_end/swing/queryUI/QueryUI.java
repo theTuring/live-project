@@ -17,7 +17,7 @@ public class QueryUI extends JFrame {
 
     private void button1ActionPerformed(ActionEvent e) {
 
-        ReservationUI reservationUI = new ReservationUI();
+        ResultUI reservationUI = new ResultUI();
 
     }
 

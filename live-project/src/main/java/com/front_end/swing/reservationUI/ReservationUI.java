@@ -1,11 +1,15 @@
 package com.front_end.swing.reservationUI;
 
+import com.front_end.tool.configtool.dao.ConfigDao;
+import com.front_end.tool.configtool.fileUtils.FileInit;
+
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 /**
  * description: ReservationUI <br>
@@ -30,9 +34,11 @@ public class ReservationUI extends JFrame {
     }
 
 
-    public ReservationUI() {
+    public ReservationUI() throws IOException {
 
         super("口罩预约");
+
+        ConfigDao configDao = new ConfigDao();
 
         //设置字体为宋体 加粗 大小为26
         Font title_font=new Font("宋体",Font.BOLD,26);
@@ -96,7 +102,7 @@ public class ReservationUI extends JFrame {
 //        this.add(textField4);
 
         final JSpinner numSpinner = new JSpinner();
-        SpinnerModel numModel = new SpinnerNumberModel(0, 0, 3, 1);
+        SpinnerModel numModel = new SpinnerNumberModel(0, 0, configDao.initConfig().get(0).getMax_have(), 1);
         numSpinner.setModel(numModel);
         numSpinner.setBounds(new Rectangle(240, 350, 400, 30));
         this.setLayout(null);//设置布局管理器为空

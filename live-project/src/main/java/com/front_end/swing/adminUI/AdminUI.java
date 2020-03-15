@@ -1,6 +1,8 @@
 package com.front_end.swing.adminUI;
 
 import com.eltima.components.ui.DatePicker;
+import com.front_end.domain.Config;
+import com.front_end.tool.configtool.dao.ConfigDao;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -8,6 +10,7 @@ import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import static com.front_end.tool.datetool.DateResult.getDatePicker;
 
@@ -19,18 +22,37 @@ import static com.front_end.tool.datetool.DateResult.getDatePicker;
  */
 public class AdminUI extends JFrame {
 
+    public static String the_start_date;
+
+    public static String the_end_date;
+
+    public static int the_max_have;
+
+    public static int the_max_mask;
+
     private void button1ActionPerformed(ActionEvent e) {
 
     }
 
-    private void button2ActionPerformed(ActionEvent e) {
+    private void button2ActionPerformed(ActionEvent e) throws IOException {
 
-        dispose();
+        Config config = new Config();
+        config.setStart_date(the_start_date);
+        config.setEnd_date(the_end_date);
+        config.setMax_have(the_max_have);
+        config.setMax_mask(the_max_mask);
+
+        ConfigDao configDao = new ConfigDao();
+        configDao.emptyConfig();
+        configDao.insertConfig(config);
+
 
     }
 
-    public AdminUI() {
+    public AdminUI() throws IOException {
         super("管理员管理");
+
+        ConfigDao configDao = new ConfigDao();
 
         //设置字体为宋体 加粗 大小为26
         Font title_font=new Font("宋体",Font.BOLD,26);
@@ -101,14 +123,14 @@ public class AdminUI extends JFrame {
 //        this.add(textField3);
 
         final JSpinner numSpinner1 = new JSpinner();
-        SpinnerModel numModel1 = new SpinnerNumberModel(3, 0, 999, 1);
+        SpinnerModel numModel1 = new SpinnerNumberModel(configDao.initConfig().get(0).getMax_have(), 0, 999, 1);
         numSpinner1.setModel(numModel1);
         numSpinner1.setBounds(new Rectangle(330, 270, 310, 30));
         this.setLayout(null);//设置布局管理器为空
         this.add(numSpinner1);
 
         final JSpinner numSpinner2 = new JSpinner();
-        SpinnerModel numModel2 = new SpinnerNumberModel(0, 0, 999, 1);
+        SpinnerModel numModel2 = new SpinnerNumberModel(configDao.initConfig().get(0).getMax_mask(), 0, 99999, 1);
         numSpinner2.setModel(numModel2);
         numSpinner2.setBounds(new Rectangle(240, 350, 400, 30));
         this.setLayout(null);//设置布局管理器为空
@@ -117,12 +139,14 @@ public class AdminUI extends JFrame {
         numSpinner1.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
                 System.out.println(numSpinner1.getValue());
+                the_max_have = Integer.parseInt(numSpinner1.getValue().toString());
             }
         });
 
         numSpinner2.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
                 System.out.println(numSpinner2.getValue());
+                the_max_mask = Integer.parseInt(numSpinner2.getValue().toString());
             }
         });
 
@@ -146,7 +170,13 @@ public class AdminUI extends JFrame {
         //添加监听
         button2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                button2ActionPerformed(e);
+                the_start_date = datepick1.getText();
+                the_end_date = datepick2.getText();
+                try {
+                    button2ActionPerformed(e);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
             }
         });
         this.setLayout(null);//设置布局管理器为空

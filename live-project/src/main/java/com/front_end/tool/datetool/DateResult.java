@@ -21,7 +21,7 @@ public class DateResult {
     public static DatePicker getDatePicker() {
         final DatePicker datepick;
         // 格式
-        String DefaultFormat = "yyyy-MM-dd HH:mm:ss";
+        String DefaultFormat = "yyyy-MM-dd";
         // 当前时间
         Date date = new Date();
         // 字体
