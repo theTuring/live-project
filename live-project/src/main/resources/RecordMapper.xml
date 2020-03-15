@@ -10,9 +10,10 @@
     <select id="selectRecordByCardId" parameterMap="domain.Record">
         SELECT * FROM record WHERE cardId = #{cardId}
     </select>
-    
+
     <select id="selectRecordByTel" parameterMap="domain.Record">
         SELECT * FROM record WHRER tel = #{tel}
     </select>
+
 
 </mapper>

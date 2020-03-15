@@ -11,11 +11,23 @@ public class Rex {
     private static String cardId = "^(\\d{6})(\\d{4})(\\d{2})(\\d{2})(\\d{3})([0-9]|X)$";
     private static String tel = "\\d{3}-\\d{8}|\\d{4}-\\{7,8}";
 
-    public boolean checkCardId(String cardId){
-        return false;
+    public  Boolean checkCardId(String cardIda) {
+        if(cardIda.length()!=18) {
+            return false;
+        }
+        if(!cardIda.matches(tel)) {
+            return false;
+        }
+        return true;
     }
 
-    public boolean checkTel(String tel){
-        return false;
+    public  boolean checkTel(String tela) {
+        if (tela.length() != 11) {
+            return false;
+        }
+        if (!tela.matches(tel)){
+            return false;
+        }
+        return true;
     }
 }
