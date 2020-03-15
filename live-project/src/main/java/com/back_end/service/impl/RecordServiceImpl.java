@@ -11,7 +11,9 @@ import com.back_end.utils.SpecialData;
 import org.apache.ibatis.session.SqlSession;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * @author 会飞的大野鸡
@@ -103,5 +105,11 @@ public class RecordServiceImpl{
             return true;
         else
             return false;
+    }
+
+    public List<Record> queryAll(int status){
+        RecordMapper recordMapper = new MybatisConfig().setIt().getMapper(RecordMapper.class);
+        ArrayList<Record> lists=(ArrayList<Record>) recordMapper.queryAll(1);
+        return lists;
     }
 }

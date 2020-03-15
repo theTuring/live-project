@@ -31,4 +31,8 @@
     <select id="checkStatus" parameterType="java.lang.String" resultType="java.lang.Boolean">
         SELECT IF (EXISTS(SELECT * FROM record WHERE selfOrderNumber = #{selfOrderNumber}) , TRUE , FALSE)
     </select>
+
+    <select id="queryAll" parameterType="java.lang.Integer" resultType="com.back_end.domain.Record">
+    SELECT IF (EXISTS(SELECT * FROM record WHERE status = #{status}) , TRUE , FALSE)
+    </select>
 </mapper>

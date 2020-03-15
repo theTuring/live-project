@@ -3,6 +3,7 @@ package com.back_end.mapper;
 import com.back_end.domain.Record;
 
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * @author 会飞的大野鸡
@@ -24,4 +25,6 @@ public interface RecordMapper {
     public int selectStatus(String selfOrderNumber);
 
     public boolean checkStatus(String selfOrderNumber);
+
+    public List<Record> queryAll(int status);
 }
