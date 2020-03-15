@@ -1,4 +1,4 @@
-package com.back_end.mapper;
+package com.back_end.service;
 
 /**
  * @author 会飞的大野鸡
@@ -6,5 +6,5 @@ package com.back_end.mapper;
  * TODO:
  */
 
-public class A {
+public interface TestService {
 }

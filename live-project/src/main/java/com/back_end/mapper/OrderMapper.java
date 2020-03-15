@@ -1,4 +1,4 @@
-package com.back_end;
+package com.back_end.mapper;
 
 /**
  * @author 会飞的大野鸡
@@ -6,5 +6,5 @@ package com.back_end;
  * TODO:
  */
 
-public class A {
+public interface OrderMapper {
 }
